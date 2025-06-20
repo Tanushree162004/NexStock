@@ -77,7 +77,7 @@ const Menu = () => {
               </p>
             </Link>
           </li>
-          <li>
+          {/* <li>
             <Link
               style={{ textDecoration: "none" }}
               to="/apps"
@@ -87,12 +87,18 @@ const Menu = () => {
                 Apps
               </p>
             </Link>
-          </li>
+          </li> */}
         </ul>
         <hr />
         <div className="profile" onClick={handleProfileClick}>
-          <div className="avatar">ZU</div>
-          <p className="username">USERID</p>
+          <div className="avatar">NS</div>
+          {/* <p className="username">USERID</p> */}
+          <li className="nav-item">
+               <Link className="nav-link active" to="/logout">
+                  Logout
+               </Link>
+          </li>
+
         </div>
       </div>
     </div>
