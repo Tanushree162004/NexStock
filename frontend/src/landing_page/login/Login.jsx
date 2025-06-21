@@ -2,6 +2,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { useNavigate } from "react-router-dom";
 
+
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
   const navigate = useNavigate();
@@ -12,13 +13,14 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("http://localhost:5000/api/auth/login", form);
+      const res = await axios.post("https://nexstock.onrender.com/login", form);
       localStorage.setItem("token", res.data.token);
-      window.location.href = "http://localhost:3000/positions"; // Redirect to dashboard
+      window.location.href = "https://nexstock-dashboard.onrender.com";// Redirect to dashboard
     } catch (err) {
       alert("Login failed. Please check your credentials.");
     }
   };
+
 
   return (
     <div className="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
@@ -67,3 +69,4 @@ export default function Login() {
     </div>
   );
 }
+
