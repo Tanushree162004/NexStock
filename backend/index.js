@@ -108,7 +108,7 @@ app.post("/newOrder", async (req, res) => {
   res.send("Order saved!");
 });
 
-app.get("/^\/(?!api).*/", (req, res) => {
+app.get("{*splat}", (req, res) => {
   res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
 });
 
