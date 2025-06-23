@@ -85,7 +85,7 @@ export default function Signup() {
         </form>
 
         <div className="text-center mt-3">
-          Already have an account? <a href="/login">Log In</a>
+          Already have an account? <a href="https://nexstock.onrender.com/login">Log In</a>
         </div>
       </div>
     </div>

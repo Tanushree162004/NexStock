@@ -1,11 +1,8 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { useNavigate } from "react-router-dom";
-
 
 export default function Login() {
   const [form, setForm] = useState({ email: "", password: "" });
-  const navigate = useNavigate();
 
   const handleChange = (e) =>
     setForm({ ...form, [e.target.name]: e.target.value });
@@ -13,14 +10,26 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://nexstock-backend.onrender.com/api/auth/login", form);
+      const res = await axios.post(
+        "https://nexstock-backend.onrender.com/api/auth/login",
+        form,
+        { withCredentials: true }
+      );
+
+      if (!res.data.token) {
+        alert("Login failed: No token received from backend.");
+        return;
+      }
+
       localStorage.setItem("token", res.data.token);
-      window.location.href = "https://nexstock-dashboard.onrender.com";// Redirect to dashboard
+      window.location.href = "https://nexstock-dashboard.onrender.com/dashboard";
     } catch (err) {
-      alert("Login failed. Please check your credentials.");
+      console.error("Login Error:", err.response || err);
+      const msg =
+        err.response?.data?.message || "Login failed. Please check your credentials.";
+      alert(msg);
     }
   };
-
 
   return (
     <div className="container d-flex align-items-center justify-content-center min-vh-100 bg-light">
@@ -63,10 +72,9 @@ export default function Login() {
         </form>
 
         <div className="text-center mt-3">
-          Don't have an account? <a href="/signup">Sign Up</a>
+          Don't have an account? <a href="https://nexstock.onrender.com/signup">Sign Up</a>
         </div>
       </div>
     </div>
   );
 }
-

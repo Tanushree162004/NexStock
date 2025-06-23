@@ -76,11 +76,7 @@ function Navbar() {
                 Support
               </Link>
             </li>
-            {/* <li className="nav-item">
-              <Link className="nav-link active" to="/logout">
-                Logout
-              </Link>
-            </li> */}
+           
           </ul>
         </div>
       </div>
