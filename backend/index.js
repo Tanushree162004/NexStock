@@ -91,9 +91,6 @@ app.use(express.static(path.join(__dirname, "../frontend/build")));
 // ✅ Routes
 app.use("/api/auth", authRoutes);
 
-app.get("*", (req, res) => {
-  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
-});
 
 app.get("/allHoldings", async (req, res) => {
   const holdings = await HoldingsModel.find({});
@@ -110,6 +107,11 @@ app.post("/newOrder", async (req, res) => {
   await order.save();
   res.send("Order saved!");
 });
+
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname, "../frontend/build/index.html"));
+});
+
 
 app.listen(PORT, async () => {
   try {
