@@ -76,11 +76,11 @@ function Navbar() {
                 Support
               </Link>
             </li>
-            <li className="nav-item">
+            {/* <li className="nav-item">
               <Link className="nav-link active" to="/logout">
                 Logout
               </Link>
-            </li>
+            </li> */}
           </ul>
         </div>
       </div>

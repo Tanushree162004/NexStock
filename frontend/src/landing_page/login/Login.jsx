@@ -13,7 +13,7 @@ export default function Login() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const res = await axios.post("https://nexstock.onrender.com/login", form);
+      const res = await axios.post("https://nexstock-backend.onrender.com/api/auth/login", form);
       localStorage.setItem("token", res.data.token);
       window.location.href = "https://nexstock-dashboard.onrender.com";// Redirect to dashboard
     } catch (err) {
